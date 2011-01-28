@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Libraries
 URL:		http://www.hoard.org/
+BuildRequires:	libstdc++-devel
 BuildRequires:	sed >= 4.0
 Source0:	http://www.cs.umass.edu/~emery/hoard/hoard-%{version}/source/%{name}-%{ver}.tar.gz
 # Source0-md5:	f2d8ec3a13d4d9ba7b1c48c777707ef5
@@ -39,13 +40,13 @@ sed -i -e '
 	CXX="%{__cxx}" \
 	CXXFLAGS="%{rpmcxxflags}"
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}
 install -p src/libhoard.so $RPM_BUILD_ROOT%{_libdir}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
